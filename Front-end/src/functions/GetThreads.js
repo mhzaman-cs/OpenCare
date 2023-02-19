@@ -25,7 +25,15 @@ const DUMMY_THREADS = [
 ];
 
 const GetThreads = () => {
-    return DUMMY_THREADS;
+
+    fetch('http://localhost:8080/api/threads/all')
+    .then(response => {
+        return response.join();
+    })
+    .catch((error) => {
+        return DUMMY_THREADS;
+      }
+    )
 };
 
 export default GetThreads;
